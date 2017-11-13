@@ -17,13 +17,12 @@ from django.conf.urls import url, include
 from django.conf import settings
 from django.contrib import admin
 
-from django.views.generic import TemplateView
+from habits.views import HabitListView
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', TemplateView.as_view(template_name='pages/home.html'),
-        name='home'),
+    url(r'^$', HabitListView.as_view(), name='home'),
 ]
 
 if 'debug_toolbar' in settings.INSTALLED_APPS:

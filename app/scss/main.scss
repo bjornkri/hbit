@@ -1,10 +1,26 @@
 @import 'variables';
 
 body {
-  background: $background_color;
+  background: #fff;
   color: $color;
 }
 
-#app {
-  background: $secondary;
+#content {
+  width: 320px;
+  margin: auto;
+}
+
+.habitlist li {
+  display: inline-block;
+  margin: 0 10px 10px 0;
+}
+
+.btn-habit {
+  display: block;
+  background-color: #fff;
+  padding: 15px;
+  border: 1px solid #656565;
+  font-size: 4rem;
+  border-radius: 10px;
+  text-decoration: none;
 }

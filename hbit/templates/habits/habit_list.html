@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Your habits</h1>
+  <ul class="habitlist">
+  {% for habit in object_list %}
+    <li class="habitlist-item"><a class="btn btn-habit" href="#">{{ habit.code }}</a></li>
+  {% endfor %}
+</ul>
+{% endblock content %}
