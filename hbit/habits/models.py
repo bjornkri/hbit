@@ -17,13 +17,12 @@ class Habit(models.Model):
     code = models.CharField(
         max_length=10,
         help_text='Tip: use an emoji!')
-    description = models.CharField(max_length=255)
+    description = models.TextField(blank=True, null=True)
     target = models.PositiveIntegerField(blank=True, null=True)
-    period = models.PositiveIntegerField(
-        blank=True, null=True, choices=PERIOD_CHOICES)
+    period = models.PositiveIntegerField(choices=PERIOD_CHOICES, default=DAILY)
     positive = models.BooleanField(
         default=True, help_text='I want to do more of this')
     user = models.ForeignKey(User)
 
-    def __string__(self):
-        return self.code
+    def __str__(self):
+        return "<{}: {}>".format(self.code, self.user)
