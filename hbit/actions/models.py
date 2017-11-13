@@ -12,5 +12,8 @@ class Action(models.Model):
     description = models.TextField(blank=True, null=True)
     timestamp = models.DateTimeField(default=timezone.now)
 
+    class Meta:
+        ordering = ['-timestamp', ]
+
     def __str__(self):
         return "{} on {}".format(self.habit, self.timestamp)

@@ -9,5 +9,16 @@ body {
 
 .btn-habit {
   font-size: 5rem;
+  padding: 0 20px;
   border: 1px solid #ddd;
+}
+
+
+.actionlist {
+  list-style: none;
+}
+
+.actionlist-item {
+  font-size: 5rem;
+  display: inline-block;
 }

@@ -6,3 +6,8 @@ window.jQuery = jQuery;
 window.Popper = Popper;
 
 require('bootstrap');
+
+
+jQuery(() => {
+  jQuery('[data-toggle="tooltip"]').tooltip();
+});

@@ -10,6 +10,10 @@ window.Popper = Popper;
 
 require('bootstrap');
 
+jQuery(function () {
+  jQuery('[data-toggle="tooltip"]').tooltip();
+});
+
 },{"bootstrap":2,"jquery":3,"popper.js":4}],2:[function(require,module,exports){
 /*!
   * Bootstrap v4.0.0-beta.2 (https://getbootstrap.com)

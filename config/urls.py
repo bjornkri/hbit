@@ -18,11 +18,13 @@ from django.conf import settings
 from django.contrib import admin
 
 from habits.views import HabitListView
+from actions.views import ActionListView
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', HabitListView.as_view(), name='home'),
+    url(r'^actions/$', ActionListView.as_view(), name='actions'),
 ]
 
 if 'debug_toolbar' in settings.INSTALLED_APPS:
