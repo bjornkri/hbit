@@ -1,3 +1,7 @@
-$background_color: #ddd;
-$color: #313131;
-$secondary: #dd3131;
+
+$font-size-base: 1rem;
+$font-family-serif: 'Arvo', serif;
+
+$font-family-base: $font-family-serif;
+$headings-font-family: 'VT323', monospace;
+$h1-font-size: floor(($font-size-base * 5));

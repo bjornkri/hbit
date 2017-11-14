@@ -1,15 +1,9 @@
 @import 'variables';
 @import "../../node_modules/bootstrap/scss/bootstrap";
 
-body {
-  background: #fff;
-  color: $color;
-}
-
-
 .btn-habit {
   font-size: 5rem;
-  padding: 0 20px;
+  padding: 0 18px;
   border: 1px solid #ddd;
 }
 

@@ -2,7 +2,6 @@ const gulp = require('gulp');
 const bro = require('gulp-bro');
 const pjson = require('./package.json');
 const plumber = require('gulp-plumber');
-const uglify = require('gulp-uglify');
 const rename = require('gulp-rename');
 const runSequence = require('run-sequence');
 const browserSync = require('browser-sync').create();
