@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="row my-3">
+  <div class="col">
+    <a href="{% url 'actions' %}">Action list</a>
+  </div>
+</div>
 <div class="row">
   <div class="col habits" data-children=".habit">
     {% for habit in object_list %}
@@ -21,11 +26,6 @@
       </div>
     </div>
     {% endfor %}
-  </div>
-</div>
-<div class="row">
-  <div class="col">
-    <a href="{% url 'actions' %}">Action list</a>
   </div>
 </div>
 {% endblock content %}
