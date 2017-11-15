@@ -12,6 +12,10 @@
             {% csrf_token %}
             <i>{{ habit.description }}</i>
             <button type="submit" class="btn btn-lg btn-success">+</button>
+            <p><a href="#advanced{{ habit.pk }}" data-toggle="collapse" aria-expanded="false" aria-controle="#advanced{{ habit.pk }}">Advanced</a></p>
+            <div class="collapse habits_advanced" id="advanced{{ habit.pk }}">
+              {{ form }}
+            </div>
           </form>
         </div>
       </div>
