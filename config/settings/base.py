@@ -23,8 +23,10 @@ env = environ.Env()
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'lvaw+u1v=ic#ob+@9jj0ie45!01-nqg0mbenn8l5$)4z^8_#@s'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG
+# ------------------------------------------------------------------------------
+# See: https://docs.djangoproject.com/en/dev/ref/settings/#debug
+DEBUG = env.bool('DJANGO_DEBUG', False)
 
 ALLOWED_HOSTS = []
 
