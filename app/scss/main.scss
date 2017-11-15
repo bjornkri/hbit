@@ -16,3 +16,16 @@
   font-size: 5rem;
   display: inline-block;
 }
+
+.habits {
+  position: relative;
+}
+
+.habits_collapse {
+  position: absolute;
+  z-index: 1;
+}
+
+.habit {
+  display: inline-block;
+}

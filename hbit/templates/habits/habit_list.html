@@ -2,9 +2,20 @@
 
 {% block content %}
 <div class="row">
-  <div class="col">
+  <div class="col habits" data-children=".habit">
     {% for habit in object_list %}
-      <a class="btn btn-habit" href="#">{{ habit.code }}</a>
+    <div class="habit">
+      <a class="btn btn-habit" data-parent=".habits" data-toggle="collapse" href="#habit{{ habit.pk }}" aria-expanded="false" aria-controls="#habit{{ habit.pk }}">{{ habit.code }}</a>
+      <div class="collapse habits_collapse" id="habit{{ habit.pk }}">
+        <div class="card card-body">
+          <form method="post" action="{% url 'create' habit.pk %}">
+            {% csrf_token %}
+            <i>{{ habit.description }}</i>
+            <button type="submit" class="btn btn-lg btn-success">+</button>
+          </form>
+        </div>
+      </div>
+    </div>
     {% endfor %}
   </div>
 </div>
