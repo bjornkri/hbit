@@ -14,6 +14,20 @@
           <h1><span class="text-danger">h</span>BIT//<span class="text-danger">-</span></h1>
         </div>
       </div>
+      {% if messages %}
+      <div class="row">
+        <div class="col">
+          <ul class="messages">
+            {% for message in messages %}
+            <li id="message_{{ forloop.counter }}"
+              {% if message.tags %}class="alert alert-{{ message.tags }}"{% endif %}>
+              {{ message }}
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      {% endif %}
       {% block content %}
       {% endblock content %}
     </div>

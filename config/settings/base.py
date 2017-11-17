@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import environ
+from django.contrib.messages import constants as messages
 
 ROOT_DIR = environ.Path(__file__) - 3
 APPS_DIR = ROOT_DIR.path('hbit')
@@ -121,6 +122,10 @@ USE_L10N = True
 
 USE_TZ = True
 
+# Bootstrap override to change ERROR to '.danger'
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger'
+}
 
 # STATIC FILE CONFIGURATION
 # ------------------------------------------------------------------------------
