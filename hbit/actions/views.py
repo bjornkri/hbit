@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from django.contrib import messages
+from django.shortcuts import redirect
 from django.views.generic import ListView, CreateView
 
 from actions.models import Action
@@ -26,4 +27,5 @@ class ActionCreateView(CreateView):
         else:
             messages.error(
                 self.request, "Trying to do someone else's hBIT!")
+            return redirect('home')
         return super(ActionCreateView, self).form_valid(form)
