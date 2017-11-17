@@ -19,6 +19,11 @@ class ActionCreateView(CreateView):
     def form_valid(self, form):
         action = form.save(commit=False)
         action.habit_id = self.kwargs['habit_pk']
-        action.save()
-        messages.info(self.request, "{} created!".format(action.habit.code))
+        if action.habit.user == self.request.user:
+            action.save()
+            messages.info(
+                self.request, "{} created!".format(action.habit.code))
+        else:
+            messages.error(
+                self.request, "Trying to do someone else's hBIT!")
         return super(ActionCreateView, self).form_valid(form)
