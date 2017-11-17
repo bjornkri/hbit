@@ -5868,7 +5868,8 @@ a.text-dark:focus, a.text-dark:hover {
 .btn-habit {
   font-size: 5rem;
   padding: 0 18px;
-  border: 1px solid #ddd; }
+  border: 1px solid #ddd;
+  background: #fff; }
 
 .actionlist {
   list-style: none; }
@@ -5885,4 +5886,5 @@ a.text-dark:focus, a.text-dark:hover {
   z-index: 1; }
 
 .habit {
-  display: inline-block; }
+  display: inline-block;
+  margin: 5px; }
