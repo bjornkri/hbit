@@ -1,45 +1,60 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="row">
-  <div class="col habits" data-children=".habit">
-    {% for habit in object_list %}
-    <div class="habit">
-      <button type="button" class="btn btn-habit" data-toggle="modal" data-target="#habit{{ habit.pk }}">
-        {{ habit.code }}
-      </button>
+  <div class="row">
+    <div class="col habits" data-children=".habit">
+      {% for habit in object_list %}
+      <div class="habit">
+        <button type="button" class="btn btn-habit" data-toggle="modal" data-target="#habit{{ habit.pk }}">
+          {{ habit.code }}
+        </button>
 
-      <div class="modal fade" id="habit{{ habit.pk }}" tabindex="-1" role="dialog" aria-labelledby="habit{{ habit.pk }}" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <span class="modal-title" id="habit{{ habit.pk }}Label">{{ habit.code }} {% if habit.positive %}Go you!{% else %}Oops! You did it again.{% endif %}</span>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <form method="post" action="{% url 'create' habit.pk %}">
-              <div class="modal-body">
-                {% csrf_token %}
-                <div class="media">
-                  <h1>{{ habit.code }}</h1>
-                  <div class="media-body ml-3 my-3">
-                    {{ habit.description }}
-                    <p class="text-muted">TODO: Stats go here</p>
+        <div class="modal fade" id="habit{{ habit.pk }}" tabindex="-1" role="dialog" aria-labelledby="habit{{ habit.pk }}" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <span class="modal-title" id="habit{{ habit.pk }}Label">{{ habit.code }} {% if habit.positive %}Go you!{% else %}Oops! You did it again.{% endif %}</span>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <form method="post" action="{% url 'create' habit.pk %}">
+                <div class="modal-body">
+                  {% csrf_token %}
+                  <div class="media">
+                    <h1>{{ habit.code }}</h1>
+                    <div class="media-body ml-3 my-3">
+                      {{ habit.description }}
+                      <p class="text-muted">TODO: Stats go here</p>
+                    </div>
                   </div>
+                  <textarea name="description" id="id_description" class="form-control" cols="40" rows="2"></textarea>
                 </div>
-                <textarea name="description" id="id_description" class="form-control" cols="40" rows="2"></textarea>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="submit" class="btn btn-primary">Log it!</button>
-              </div>
-            </form>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                  <button type="submit" class="btn btn-primary">Log it!</button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>
+      {% endfor %}
     </div>
-    {% endfor %}
   </div>
-</div>
+
+  <div class="row mt-5">
+    <div class="col">
+    {% if todays_actions %}
+      <h3>Today's actions</h3>
+      <ul class="actionlist">
+      {% for action in todays_actions %}
+        <li class="actionlist-item" data-toggle="tooltip" data-placement="bottom" title="{{ action.description }}">
+          {{ action.habit.code }}
+        </li>
+      {% endfor %}
+      </ul>
+    {% endif %}
+    </div>
+  </div>
 {% endblock content %}

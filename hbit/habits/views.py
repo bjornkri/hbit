@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from django.utils import timezone
 from django.views.generic import ListView
 
 from habits.models import Habit
+from actions.models import Action
 from actions.forms import ActionForm
 
 
@@ -17,4 +19,8 @@ class HabitListView(ListView):
     def get_context_data(self, **kwargs):
         context = super(HabitListView, self).get_context_data(**kwargs)
         context['form'] = ActionForm()
+        context['todays_actions'] = Action.objects.filter(
+            habit__user=self.request.user,
+            timestamp__date=timezone.now()
+        )
         return context
