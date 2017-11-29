@@ -10,3 +10,6 @@ hbit/media
 ### Node
 node_modules
 npm-debug.log
+
+### Editors
+.idea
