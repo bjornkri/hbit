@@ -22,8 +22,11 @@ class ActionCreateView(CreateView):
         action.habit_id = self.kwargs['habit_pk']
         if action.habit.user == self.request.user:
             action.save()
+            desc = ""
+            if action.description:
+                desc = " ({})".format(action.description)
             messages.info(
-                self.request, "{} created!".format(action.habit.code))
+                self.request, "{}{} created!".format(action.habit.code, desc))
         else:
             messages.error(
                 self.request, "Trying to do someone else's hBIT!")
