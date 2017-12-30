@@ -2,17 +2,21 @@
 from __future__ import unicode_literals
 
 from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect
 from django.views.generic import ListView, CreateView
 
 from actions.models import Action
 
 
-class ActionListView(ListView):
+class ActionListView(LoginRequiredMixin, ListView):
     model = Action
 
+    def get_queryset(self):
+        qs = super(ActionListView, self).get_queryset()
+        return qs.filter(habit__user=self.request.user)
 
-class ActionCreateView(CreateView):
+class ActionCreateView(LoginRequiredMixin, CreateView):
     model = Action
     fields = ['description']
     success_url = '/'

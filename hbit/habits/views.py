@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils import timezone
 from django.views.generic import ListView
 
@@ -9,7 +10,7 @@ from actions.models import Action
 from actions.forms import ActionForm
 
 
-class HabitListView(ListView):
+class HabitListView(LoginRequiredMixin, ListView):
     model = Habit
 
     def get_queryset(self):
