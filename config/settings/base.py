@@ -33,6 +33,7 @@ DEBUG = env.bool('DJANGO_DEBUG', False)
 
 ALLOWED_HOSTS = []
 
+LOGIN_REDIRECT_URL = '/'
 
 # Application definition
 

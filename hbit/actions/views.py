@@ -16,6 +16,7 @@ class ActionListView(LoginRequiredMixin, ListView):
         qs = super(ActionListView, self).get_queryset()
         return qs.filter(habit__user=self.request.user)
 
+
 class ActionCreateView(LoginRequiredMixin, CreateView):
     model = Action
     fields = ['description']

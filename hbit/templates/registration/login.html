@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <p>hBIT is an app for keeping track of your habits, good and bad.</p>
+  <h2>❤️ Coming soon ❤️</h2>
+  <p>If you do have an account, you can log in here.</p>
+  <form method="post" action=".">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Log in</button>
+  </form>
+{% endblock content %}

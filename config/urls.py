@@ -23,13 +23,17 @@ from actions.views import ActionListView, ActionCreateView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', HabitListView.as_view(), name='home'),
     url(
         r'^actions/create/(?P<habit_pk>[0-9a-f-]+)/$',
         ActionCreateView.as_view(),
         name='create'
     ),
     url(r'^actions/$', ActionListView.as_view(), name='actions'),
+    url(r'^$', HabitListView.as_view(), name='home')
+]
+
+urlpatterns += [
+    url('^accounts/', include('django.contrib.auth.urls')),
 ]
 
 if 'debug_toolbar' in settings.INSTALLED_APPS:
