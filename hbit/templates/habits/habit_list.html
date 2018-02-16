@@ -8,6 +8,7 @@
         <button type="button" class="btn btn-habit" data-toggle="modal" data-target="#habit{{ habit.pk }}">
           {{ habit.code }}
         </button>
+      {{ habit.current_streak }}{% if habit.target %} / {{ habit.target }}{% endif %}
 
         <div class="modal fade" id="habit{{ habit.pk }}" tabindex="-1" role="dialog" aria-labelledby="habit{{ habit.pk }}" aria-hidden="true">
           <div class="modal-dialog" role="document">

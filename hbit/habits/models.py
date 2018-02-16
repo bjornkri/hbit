@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+import datetime
+
 from django.contrib.auth import get_user_model
 from django.db import models
 
@@ -26,3 +28,11 @@ class Habit(models.Model):
 
     def __str__(self):
         return "<{}: {}>".format(self.code, self.user)
+
+    def current_streak(self):
+        start_date = datetime.date.today()
+        if self.period == self.WEEKLY:
+            start_date -= datetime.timedelta(days=7)
+        elif self.period == self.MONTHLY:
+            start_date -= datetime.timedelta(days=30)
+        return self.action_set.filter(timestamp__gte=start_date).count()
