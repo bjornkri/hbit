@@ -32,7 +32,7 @@ class Habit(models.Model):
     def current_streak(self):
         start_date = datetime.date.today()
         if self.period == self.WEEKLY:
-            start_date -= datetime.timedelta(days=7)
+            start_date -= datetime.timedelta(days=6)
         elif self.period == self.MONTHLY:
-            start_date -= datetime.timedelta(days=30)
+            start_date -= datetime.timedelta(days=29)
         return self.action_set.filter(timestamp__gte=start_date).count()
